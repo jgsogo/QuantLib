@@ -30,6 +30,9 @@ before_install:
   - docker pull ${DOCKER_IMAGE}
 
 script:
+  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} sudo apt-get update
+  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} sudo apt-get install cmake
+  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} cmake .
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} cmake .
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} cmake --build .
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} ccache --zero-stats
