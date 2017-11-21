@@ -32,7 +32,7 @@ before_install:
 script:
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} sudo apt-get update
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} sudo apt-get install software-properties-common
-  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} sudo add-apt-repository ppa:george-edison55/cmake-3.x
+  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} sudo apt-add-repository ppa:george-edison55/cmake-3.x
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} sudo apt-get update
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} sudo apt-get install cmake
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} cmake .
