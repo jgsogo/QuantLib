@@ -31,7 +31,7 @@ before_install:
 
 script:
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} cmake .
-  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} cmake --build .
+  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} ccache cmake --build .
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} ccache --zero-stats
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} ccache --max-size=2.5G
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} ccache --show-stats
