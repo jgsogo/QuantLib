@@ -30,11 +30,6 @@ before_install:
   - docker pull ${DOCKER_IMAGE}
 
 script:
-  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} apt-get update
-  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} apt-get install software-properties-common python-software-properties
-  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} add-apt-repository ppa:george-edison55/cmake-3.x
-  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} apt-get update
-  - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} apt-get install cmake
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} cmake .
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} cmake --build .
   - docker run ${DOCKER_OPTS} ${DOCKER_IMAGE} ccache --zero-stats
