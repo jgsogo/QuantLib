@@ -4,7 +4,7 @@ project(QuantLib)
 
 include(${CMAKE_CURRENT_LIST_DIR}/cmake/quantlib.cmake)
 
-option(USE_BOOST_DYNAMIC_LIBRARIES "Use the shared version of Boost libraries" ON)
+option(USE_BOOST_DYNAMIC_LIBRARIES "Use the shared version of Boost libraries" ${UNIX})
 if (USE_BOOST_DYNAMIC_LIBRARIES)
     add_definitions(-DBOOST_DYN_LINK)
 else()
@@ -12,7 +12,7 @@ else()
 endif()
 
 if (MSVC)
-    set(MSVC_RUNTIME "static" CACHE STRING "MSVC runtime to link")
+    set(MSVC_RUNTIME "dynamic" CACHE STRING "MSVC runtime to link")
     set_property(CACHE MSVC_RUNTIME PROPERTY STRINGS static dynamic)
     configure_msvc_runtime()
 
@@ -22,6 +22,9 @@ if (MSVC)
         endif()
         set(Boost_USE_STATIC_RUNTIME ON)
     endif()
+
+    # Remove warnings
+    add_definitions(-D_SCL_SECURE_NO_WARNINGS -D_CRT_SECURE_NO_WARNINGS)
 endif()
 
 # to reference headers via <ql/foo.hpp>, we need to add the root
