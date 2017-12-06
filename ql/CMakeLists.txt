@@ -15,6 +15,7 @@ else()
 endif()
 set(QL_LINK_LIBRARY ${QL_OUTPUT_NAME} PARENT_SCOPE)
 
+target_link_libraries(${QL_LINK_LIBRARY} ${Boost_LIBRARIES})
 
 install(DIRECTORY . DESTINATION include/ql
         FILES_MATCHING PATTERN "*.hpp" PATTERN "*.h")
