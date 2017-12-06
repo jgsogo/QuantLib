@@ -40,15 +40,11 @@ def get_ci_vars():
     reponame_t = os.getenv("TRAVIS_REPO_SLUG","")
     repobranch_t = os.getenv("TRAVIS_BRANCH","")
 
-    print("*"*20)
-    print("get_ci_vars")
-    print("reponame_a={}".format(reponame_a))
-    print("repobranch_a={}".format(repobranch_a))
-    print("reponame_t={}".format(reponame_t))
-    print("repobranch_t={}".format(repobranch_t))
-    
     username, _ = reponame_a.split("/") if reponame_a else reponame_t.split("/")
-    channel, version = repobranch_a.split("/") if repobranch_a else repobranch_t.split("/")
+    try:
+        channel, version = repobranch_a.split("/") if repobranch_a else repobranch_t.split("/")
+    except ValueError:
+        _, channel, version = get_default_vars()  # Fallback to default vars if branch name does not suits channel/version format.
     return username, channel, version
 
 
