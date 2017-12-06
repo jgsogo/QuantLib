@@ -16,6 +16,7 @@ endif()
 set(QL_LINK_LIBRARY ${QL_OUTPUT_NAME} PARENT_SCOPE)
 
 if(Boost_LIBRARIES)
+    message(STATUS "Linking ${QL_OUTPUT_NAME} against libraries ${Boost_LIBRARIES}")
     target_link_libraries(${QL_OUTPUT_NAME} ${Boost_LIBRARIES})
 endif()
 
