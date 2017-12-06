@@ -38,7 +38,7 @@ endif()
 # directory of the project to includes
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-find_package(Boost)
+find_package(Boost COMPONENTS date_time REQUIRED)
 if (Boost_FOUND)
   include_directories(${Boost_INCLUDE_DIRS})
 endif (Boost_FOUND)
